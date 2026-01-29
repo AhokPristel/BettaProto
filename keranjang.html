@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja - BettaMan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .cart-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .cart-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .cart-summary {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .payment-method {
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+        
+        .payment-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .cart-container {
+                padding: 1rem;
+            }
+            
+            .cart-item-image {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .cart-summary {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🐠</span>
+                    <span class="logo-text">BettaMan</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="tentang.html">Tentang</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                        <li><a href="kritik.html">Kritik & Saran</a></li>
+                        <li><a href="keranjang.html" class="active">🛒 Keranjang</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <h1>🛒 Keranjang Belanja</h1>
+                    <p>Kelola produk pilihan Anda sebelum checkout</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div id="cartItems">
+                            <div class="cart-item">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2">
+                                        <img src="img/flaring-super-blue-betta-fish-halfmoon.jpg" alt="Betta Halfmoon Blue" class="cart-item-image">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Betta Halfmoon Blue</h5>
+                                        <p class="text-muted mb-0">Ikan cupang halfmoon dengan warna biru laut yang memukau</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge bg-primary me-2">Qty: 1</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <strong>Rp 55.000</strong>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <strong>Rp 55.000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cart-item">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2">
+                                        <img src="img/142d55dcd847677435b40f4c8ff9c42b.jpg" alt="Betta Crowntail Red" class="cart-item-image">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Betta Crowntail Red</h5>
+                                        <p class="text-muted mb-0">Crowntail dengan warna merah menyala dan ekor yang indah</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge bg-primary me-2">Qty: 2</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <strong>Rp 70.000</strong>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <strong>Rp 140.000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cart-summary">
+                            <h4 class="mb-4">Ringkasan Belanja</h4>
+                            
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Subtotal:</span>
+                                <span>Rp 195.000</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Ongkos Kirim:</span>
+                                <span>Rp 15.000</span>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="d-flex justify-content-between mb-4">
+                                <strong>Total:</strong>
+                                <strong>Rp 210.000</strong>
+                            </div>
+
+                            <h5 class="mb-3">Metode Pembayaran</h5>
+                            
+                            <div class="payment-method">
+                                <div class="d-flex align-items-center">
+                                    <span class="payment-icon">🏦</span>
+                                    <div>
+                                        <strong>Transfer Bank</strong>
+                                        <p class="mb-0 small text-muted">BCA, Mandiri, BNI, BRI</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <div class="d-flex align-items-center">
+                                    <span class="payment-icon">📱</span>
+                                    <div>
+                                        <strong>E-Wallet</strong>
+                                        <p class="mb-0 small text-muted">GoPay, OVO, DANA, ShopeePay</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <div class="d-flex align-items-center">
+                                    <span class="payment-icon">💵</span>
+                                    <div>
+                                        <strong>Cash on Delivery</strong>
+                                        <p class="mb-0 small text-muted">Bayar di tempat</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="checkout-btn mt-4" onclick="alert('Silakan hubungi kami via WhatsApp untuk melakukan pemesanan: +62 812-3456-7890')">
+                                Checkout Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BettaMan</h4>
+                    <p>Penyedia ikan cupang berkualitas tinggi dengan berbagai jenis pilihan.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="tentang.html">Tentang</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak</h4>
+                    <p>📞 +62 812-3456-7890</p>
+                    <p>✉️ bettaman@gmail.com</p>
+                    <p>📍 Malang, Jawa Timur</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BettaMan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
